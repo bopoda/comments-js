@@ -3,7 +3,8 @@ var commentsWidget = new CommentsWidget();
 function CommentsWidget() {
     this.HOTKEY_ENTER = 'enter';
     this.HOTKEY_CTRL_ENTER = 'ctrl+enter';
-
+    this.$comment = '';
+    this.$hotkey = '';
     this.defaultHotkey = this.HOTKEY_CTRL_ENTER;
 
     /**
@@ -11,6 +12,7 @@ function CommentsWidget() {
      */
     this.init = function () {
         commentsWidget.$comment = $('#comment');
+        commentsWidget.$hotkey = $('#commentsWidgetForm .toggleSubmitHotKey .hotkey');
 
         this.applyEvents();
     };
@@ -32,11 +34,12 @@ function CommentsWidget() {
 
             $('#commentsWidgetList').prepend(commentHtml);
             commentsWidget.$comment.val('');
+            $('html,body').animate({scrollTop: $('#commentsWidgetList').offset().top - 70});
         });
 
         $('#commentsWidgetForm .toggleSubmitHotKey').on("click", function (e) {
             e.preventDefault();
-            var hotkey = $(this).find('.hotkey').text();
+            var hotkey = commentsWidget.getSubmitHotkey();
             nextHotkey = commentsWidget.getNextSubmitHotkey(hotkey);
             commentsWidget.setSubmitHotkey(nextHotkey);
         });
@@ -94,7 +97,7 @@ function CommentsWidget() {
      * @returns {string}
      */
     this.getSubmitHotkey = function () {
-        var hotkey = $('#commentsWidgetForm .toggleSubmitHotKey .hotkey').text();
+        var hotkey = commentsWidget.$hotkey.text();
 
         if (!jQuery.inArray(hotkey, commentsWidget.getAllowedSubmitHotkeys)) {
             hotkey = commentsWidget.defaultHotkey;
@@ -113,7 +116,7 @@ function CommentsWidget() {
             hotkey = commentsWidget.defaultHotkey;
         }
 
-        $('#commentsWidgetForm .toggleSubmitHotKey .hotkey').text(hotkey);
+        commentsWidget.$hotkey.text(hotkey);
     };
 
     /**

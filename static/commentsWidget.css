@@ -1,6 +1,7 @@
 #commentsWidget {
     margin: 0 auto;
     max-width: 550px;
+    padding-bottom: 80px;
 }
 
 #commentsWidget textarea {
@@ -9,19 +10,24 @@
     margin: 20px 2px;
     padding:5px 0 5px 5px;
 }
+
 #commentsWidgetList  {
     float:right;
+    max-width: 60%;
 }
 
 #commentsWidgetList .comment-row {
+    overflow:hidden;
+    text-overflow: ellipsis;
     white-space: pre-wrap;
-    float:left;
     background-color: #e8fffd;
     padding:5px 10px;
     display: block;
+    clear: both;
+    margin:15px 0;
 }
 
-#commentsWidget .toggleSubmitHotKey, #commentsWidget .submit {
+#commentsWidget .submitGroup {
     float:right;
 }
 
