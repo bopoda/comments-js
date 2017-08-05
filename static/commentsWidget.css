@@ -1,0 +1,35 @@
+#commentsWidget {
+    margin: 0 auto;
+    max-width: 550px;
+}
+
+#commentsWidget textarea {
+    width:100%;
+    height:80px;
+    margin: 20px 2px;
+    padding:5px 0 5px 5px;
+}
+#commentsWidgetList  {
+    float:right;
+}
+
+#commentsWidgetList .comment-row {
+    white-space: pre-wrap;
+    float:left;
+    background-color: #e8fffd;
+    padding:5px 10px;
+    display: block;
+}
+
+#commentsWidget .toggleSubmitHotKey, #commentsWidget .submit {
+    float:right;
+}
+
+#commentsWidget .toggleSubmitHotKey {
+    margin-right:20px;
+}
+
+#commentsWidgetForm {
+    padding-top:50px;
+}
+
