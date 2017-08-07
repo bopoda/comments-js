@@ -116,7 +116,7 @@ function CommentsWidget() {
     this.getSubmitHotkey = function () {
         var hotkey = _this.$hotkey.text();
 
-        if (!jQuery.inArray(hotkey, _this.getAllowedSubmitHotkeys)) {
+        if (jQuery.inArray(hotkey, _this.getAllowedSubmitHotkeys()) === -1) {
             hotkey = _this.defaultHotkey;
         }
 
