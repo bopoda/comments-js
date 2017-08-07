@@ -16,8 +16,8 @@ function CommentsWidget() {
      * @param options
      */
     this.init = function (options) {
-        _this.$comment = $('#comment');
-        _this.$hotkey = $('#commentsWidgetForm .toggleSubmitHotKey .hotkey');
+        this.$comment = $('#comment');
+        this.$hotkey = $('#commentsWidgetForm .toggleSubmitHotKey .hotkey');
 
         this.applyOptions(options);
         this.applyEvents();
@@ -30,7 +30,7 @@ function CommentsWidget() {
      */
     this.applyOptions = function(options) {
         if (options.submitHotkey) {
-            _this.setSubmitHotkey(options.submitHotkey);
+            this.setSubmitHotkey(options.submitHotkey);
         }
     };
 
@@ -89,11 +89,11 @@ function CommentsWidget() {
      * @returns {string}
      */
     this.getNextSubmitHotkey = function (hotkey) {
-        if (hotkey == _this.HOTKEY_CTRL_ENTER) {
-            return _this.HOTKEY_ENTER;
+        if (hotkey == this.HOTKEY_CTRL_ENTER) {
+            return this.HOTKEY_ENTER;
         }
 
-        return _this.HOTKEY_CTRL_ENTER;
+        return this.HOTKEY_CTRL_ENTER;
     };
 
     /**
@@ -103,8 +103,8 @@ function CommentsWidget() {
      */
     this.getAllowedSubmitHotkeys = function () {
         return [
-            _this.HOTKEY_CTRL_ENTER,
-            _this.HOTKEY_ENTER
+            this.HOTKEY_CTRL_ENTER,
+            this.HOTKEY_ENTER
         ];
     };
 
@@ -114,10 +114,10 @@ function CommentsWidget() {
      * @returns {string}
      */
     this.getSubmitHotkey = function () {
-        var hotkey = _this.$hotkey.text();
+        var hotkey = this.$hotkey.text();
 
-        if (jQuery.inArray(hotkey, _this.getAllowedSubmitHotkeys()) === -1) {
-            hotkey = _this.defaultHotkey;
+        if (jQuery.inArray(hotkey, this.getAllowedSubmitHotkeys()) === -1) {
+            hotkey = this.defaultHotkey;
         }
 
         return hotkey;
@@ -129,11 +129,11 @@ function CommentsWidget() {
      * @param {string} hotkey
      */
     this.setSubmitHotkey = function (hotkey) {
-        if (jQuery.inArray(hotkey, _this.getAllowedSubmitHotkeys()) === -1) {
-            hotkey = _this.defaultHotkey;
+        if (jQuery.inArray(hotkey, this.getAllowedSubmitHotkeys()) === -1) {
+            hotkey = this.defaultHotkey;
         }
 
-        _this.$hotkey.text(hotkey);
+        this.$hotkey.text(hotkey);
     };
 
     /**
