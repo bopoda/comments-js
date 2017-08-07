@@ -8,7 +8,9 @@
     <script src="static/commentsWidget.js"></script>
     <script>
         $(document).ready(function () {
-            commentsWidget.init();
+            commentsWidget.init({
+                'submitHotkey' : 'ctrl+enter'
+            });
         });
     </script>
 </head>

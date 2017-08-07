@@ -3,18 +3,33 @@ var commentsWidget = new CommentsWidget();
 function CommentsWidget() {
     this.HOTKEY_ENTER = 'enter';
     this.HOTKEY_CTRL_ENTER = 'ctrl+enter';
-    this.$comment = '';
-    this.$hotkey = '';
+    this.$comment = void 0;
+    this.$hotkey = void 0;
     this.defaultHotkey = this.HOTKEY_CTRL_ENTER;
 
     /**
      * Init and enable comments widget
+     * Use options to set default params
+     *
+     * @param options
      */
-    this.init = function () {
+    this.init = function (options) {
         commentsWidget.$comment = $('#comment');
         commentsWidget.$hotkey = $('#commentsWidgetForm .toggleSubmitHotKey .hotkey');
 
+        this.applyOptions(options);
         this.applyEvents();
+    };
+
+    /**
+     * Set default widget options
+     *
+     * @param options
+     */
+    this.applyOptions = function(options) {
+        if (options.submitHotkey) {
+            commentsWidget.setSubmitHotkey(options.submitHotkey);
+        }
     };
 
     /**
@@ -112,7 +127,7 @@ function CommentsWidget() {
      * @param {string} hotkey
      */
     this.setSubmitHotkey = function (hotkey) {
-        if (!jQuery.inArray(hotkey, commentsWidget.getAllowedSubmitHotkeys)) {
+        if (jQuery.inArray(hotkey, commentsWidget.getAllowedSubmitHotkeys()) === -1) {
             hotkey = commentsWidget.defaultHotkey;
         }
 
